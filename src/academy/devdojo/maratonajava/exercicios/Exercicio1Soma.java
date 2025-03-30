@@ -25,6 +25,6 @@ public class Exercicio1Soma {
             System.out.println("A soma é: " + soma);
             System.out.println("A soma de " + A + "+" + B + " resulta em " + soma + ", portanto, é menor que " + C);
         }
-        System.out.println("master");
+
     }
 }
