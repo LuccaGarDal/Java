@@ -6,10 +6,10 @@ import academy.devdojo.maratonajava.javacore.Lclassesabstratas.dominio.Gerente;
 
 public class FuncionarioTest01 {
     public static void main(String[] args) {
-        Desenvolvedor desenvolvedor = new Desenvolvedor("Zoro", 2000);
-        Gerente gerente = new Gerente("Nami", 12000);
-        System.out.println(desenvolvedor);
+        Gerente gerente = new Gerente("Zoro", 2000);
+        Desenvolvedor desenvolvedor = new Desenvolvedor("Nami", 12000);
         System.out.println(gerente);
+        System.out.println(desenvolvedor);
 
     }
 }
