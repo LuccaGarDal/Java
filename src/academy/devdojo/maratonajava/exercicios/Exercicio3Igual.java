@@ -9,11 +9,13 @@ public class Exercicio3Igual {
         int A = entrada.nextInt();
         System.out.println("Digite outro número: ");
         int B = entrada.nextInt();
-        int soma = A + B;
+        int C;
         if (A - B == 0) {
-            System.out.println("A soma de "+A+" e "+B+" é igual a "+soma);
+            C = A + B;
+            System.out.println("A soma de "+A+" e "+B+" é igual a "+C);
         }else {
-            System.out.println("Os números não são iguais, então não posso somar.");
+            C = A * B;
+            System.out.println("A multiplicação de "+A+" e "+B+" é igual a "+C);
         }
     }
 }
