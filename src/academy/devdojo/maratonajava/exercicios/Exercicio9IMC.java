@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Exercicio9IMC {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
+        System.out.println("Digite a sua altura em metros: ");
         double altura = entrada.nextDouble();
+        System.out.println("Digite o seu peso em quilos: ");
         double peso = entrada.nextDouble();
         double altura2 = altura * altura;
         double imc = peso / altura2;
