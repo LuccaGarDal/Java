@@ -20,11 +20,11 @@ public class Exercicio16Triangulo {
         }
 
         if (A == B && B == C) {
-            System.out.println("O triângulo é equilátero");
+            System.out.println("O triângulo é equilátero.");
         } else if (A == B || B == C || C == A) {
-            System.out.println("O triângulo é isósceles");
+            System.out.println("O triângulo é isósceles.");
         } else {
-            System.out.println("O triângulo é escaleno");
+            System.out.println("O triângulo é escaleno.");
         }
     }
 }
