@@ -1,6 +1,7 @@
 package academy.devdojo.maratonajava.javacore.Oexception.runtime.test;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class RuntimeExceptionTest04 {
@@ -22,10 +23,8 @@ public class RuntimeExceptionTest04 {
 
         try {
             talvezLanceExcpetion();
-        } catch (SQLException e) {
-            System.out.println("Dentro da SQLException");
-        } catch (FileNotFoundException e) {
-            System.out.println("Dentro da FileNotFoundException");
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
         }
     }
 
