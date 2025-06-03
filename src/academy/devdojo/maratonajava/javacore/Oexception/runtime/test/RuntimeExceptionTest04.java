@@ -22,13 +22,13 @@ public class RuntimeExceptionTest04 {
         }
 
         try {
-            talvezLanceExcpetion();
+            talvezLanceException();
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private static void talvezLanceExcpetion () throws SQLException, FileNotFoundException {
+    private static void talvezLanceException () throws SQLException, FileNotFoundException {
 
     }
 }
