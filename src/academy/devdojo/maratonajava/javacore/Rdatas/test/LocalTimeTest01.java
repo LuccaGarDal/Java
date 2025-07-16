@@ -7,7 +7,8 @@ public class LocalTimeTest01 {
     public static void main(String[] args) {
         LocalTime time = LocalTime.of(23,50,20);
         LocalTime agora = LocalTime.now();
-        System.out.println();
+        System.out.println(time);
+        System.out.println(agora);
         System.out.println(time.getHour());
         System.out.println(time.getMinute());
         System.out.println(time.getSecond());
