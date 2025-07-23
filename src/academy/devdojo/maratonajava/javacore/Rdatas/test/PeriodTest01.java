@@ -22,6 +22,6 @@ public class PeriodTest01 {
         System.out.println(p5);
         System.out.println(p3.getMonths());
         System.out.println(Period.between(LocalDate.now(), LocalDate.now().plusDays(p3.getDays())).getMonths());
-        System.out.println(now.until(now.plusDays(p3.getDays()), ChronoUnit.DAYS));
+        System.out.println(now.until(now.plusDays(p3.getDays()), ChronoUnit.MONTHS));
     }
 }
