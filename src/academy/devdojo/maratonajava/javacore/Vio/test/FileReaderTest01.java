@@ -8,7 +8,7 @@ import java.io.IOException;
 public class FileReaderTest01 {
     public static void main(String[] args) {
         File file = new File("texto.txt");
-        try (FileReader fr = new FileReader(file);) {
+        try (FileReader fr = new FileReader(file)) {
 
             int i;
             while((i=fr.read()) != -1) {
