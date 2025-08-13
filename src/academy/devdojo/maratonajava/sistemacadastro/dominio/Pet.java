@@ -9,6 +9,10 @@ public class Pet {
     private int peso;
     private String raca;
 
+    public Pet () {
+
+    }
+
     public Pet (String nome, TipoPet tipoPet, TipoSexo tipoSexo, String endereco, int idade, int peso, String raca) {
         this.nome = nome;
         this.tipoPet = tipoPet;
@@ -27,5 +31,61 @@ public class Pet {
         System.out.println(this.idade);
         System.out.println(this.peso);
         System.out.println(this.raca);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public TipoPet getTipoPet() {
+        return tipoPet;
+    }
+
+    public void setTipoPet(TipoPet tipoPet) {
+        this.tipoPet = tipoPet;
+    }
+
+    public TipoSexo getTipoSexo() {
+        return tipoSexo;
+    }
+
+    public void setTipoSexo(TipoSexo tipoSexo) {
+        this.tipoSexo = tipoSexo;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
     }
 }
