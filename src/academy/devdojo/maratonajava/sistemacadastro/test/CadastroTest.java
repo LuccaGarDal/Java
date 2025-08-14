@@ -3,6 +3,7 @@ package academy.devdojo.maratonajava.sistemacadastro.test;
 import academy.devdojo.maratonajava.sistemacadastro.dominio.NomePetInvalidoException;
 import academy.devdojo.maratonajava.sistemacadastro.dominio.Pet;
 import academy.devdojo.maratonajava.sistemacadastro.dominio.TipoPet;
+import academy.devdojo.maratonajava.sistemacadastro.dominio.TipoSexo;
 
 import java.io.*;
 import java.util.Scanner;
@@ -33,7 +34,7 @@ public class CadastroTest {
         }
 
         try (FileReader fr = new FileReader(formulario);
-        BufferedReader br = new BufferedReader(fr)){
+             BufferedReader br = new BufferedReader(fr)) {
             String linha;
             while ((linha = br.readLine()) != null) {
                 System.out.println(linha);
@@ -64,12 +65,13 @@ public class CadastroTest {
             switch (opcao) {
                 case 1:
                     try (FileReader fr = new FileReader(formulario);
-                         BufferedReader br = new BufferedReader(fr)){
+                         BufferedReader br = new BufferedReader(fr)) {
                         Pet pet1 = new Pet();
                         Scanner entrada2 = new Scanner(System.in);
                         String linha;
                         String nome;
                         String tipoPet = ".";
+                        String tipoSexo = ".";
                         boolean nomeValido = false;
                         linha = br.readLine();
                         while (!nomeValido) {
@@ -78,9 +80,12 @@ public class CadastroTest {
                                 nome = entrada2.nextLine();
                                 pet1.setNome(nome);
 
-                                if (!nome.matches("^[A-Za-z]+\\s[A-Za-z]+$")) {
+                                if (nome.trim().isEmpty()) {
+                                    pet1.setNome("NÃO INFORMADO");
+                                } else if (!nome.matches("^[A-Za-z]+\\s[A-Za-z]+$")) {
                                     throw new NomePetInvalidoException("É necessário informar sobrenome.");
                                 }
+
 
                                 nomeValido = true;
                             } catch (NomePetInvalidoException e) {
@@ -88,31 +93,87 @@ public class CadastroTest {
                             }
                         }
                         linha = br.readLine();
-                        boolean tipoValido = false;
-                        while (!tipoValido) {
+                        boolean tipoPetValido = false;
+                        while (!tipoPetValido) {
                             try {
                                 System.out.println(linha);
+                                System.out.println("Cachorro ou Gato: ");
                                 tipoPet = entrada2.nextLine();
 
-                                if (!(tipoPet.equalsIgnoreCase("cachorro")  || tipoPet.equalsIgnoreCase("gato"))) {
+                                if (!(tipoPet.equalsIgnoreCase("cachorro") || tipoPet.equalsIgnoreCase("gato"))) {
                                     throw new IllegalArgumentException("Você inseriu um valor inválido");
                                 }
 
-                                tipoValido = true;
+                                tipoPetValido = true;
                             } catch (IllegalArgumentException e) {
-                                e.getMessage();
+                                System.out.println(e.getMessage());
                             }
                         }
-                        if (tipoPet.equals("Cachorro")) {
+                        if (tipoPet.equalsIgnoreCase("Cachorro")) {
                             pet1.setTipoPet(TipoPet.CACHORRO);
                         } else {
                             pet1.setTipoPet(TipoPet.GATO);
                         }
+                        linha = br.readLine();
+                        boolean tipoSexoValido = false;
+                        while (!tipoSexoValido) {
+                            try {
+                                System.out.println(linha);
+                                System.out.println("Macho ou Femea: ");
+                                tipoSexo = entrada2.nextLine();
+
+                                if (!(tipoSexo.equalsIgnoreCase("macho") || tipoSexo.equalsIgnoreCase("femea"))) {
+                                    throw new IllegalArgumentException("Você inseriu um valor inválido");
+                                }
+
+                                tipoSexoValido = true;
+                            } catch (IllegalArgumentException e) {
+                                e.getMessage();
+                            }
+                        }
+                        if (tipoSexo.equalsIgnoreCase("macho")) {
+                            pet1.setTipoSexo(TipoSexo.MACHO);
+                        } else {
+                            pet1.setTipoSexo(TipoSexo.FEMEA);
+                        }
+                        String numeroCasa = "";
+                        String cidade = "";
+                        String rua = "";
+                        linha = br.readLine();
+                        boolean enderecoValido = false;
+                        while (!enderecoValido) {
+                            try {
+                                System.out.println(linha);
+                                System.out.printf("Número da Casa: ");
+                                numeroCasa = entrada2.nextLine();
+                                System.out.println("Cidade: ");
+                                cidade = entrada2.nextLine();
+                                System.out.println("Rua: ");
+                                rua = entrada2.nextLine();
+
+                                if (!cidade.matches("[A-Za-z]+")) {
+                                    throw new RuntimeException("Cidade Inválida.");
+                                }
+                                if (!rua.matches("[A-Za-z]+\\s[A-Za-z]+")) {
+                                    throw new RuntimeException("Rua Inválida.");
+                                }
+                                if (numeroCasa.matches("")) {
+                                    numeroCasa = "NÃO INFORMADO";
+                                } else if (!numeroCasa.matches("[0-9]+")) {
+                                    throw new RuntimeException("Resposta Inválida.");
+                                }
+
+
+                                enderecoValido = true;
+                            } catch (RuntimeException e) {
+                                System.out.println(e.getMessage());
+                            }
+                        }
+                        pet1.setEndereco(rua.concat(", " + numeroCasa).concat(", " + cidade));
                         System.out.println(pet1.getNome());
                         System.out.println(pet1.getTipoPet().getNome());
-
-
-
+                        System.out.println(pet1.getTipoSexo().getNome());
+                        System.out.println(pet1.getEndereco());
 
 
                     } catch (IOException e) {
