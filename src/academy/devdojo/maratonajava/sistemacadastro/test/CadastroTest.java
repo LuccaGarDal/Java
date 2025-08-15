@@ -43,7 +43,6 @@ public class CadastroTest {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         Scanner entrada = new Scanner(System.in);
         int opcao = -1;
         while (opcao != 6) {
@@ -72,7 +71,13 @@ public class CadastroTest {
                         String nome;
                         String tipoPet = ".";
                         String tipoSexo = ".";
+                        String raca = ".";
+                        double peso = 0;
+                        double idade = 0;
                         boolean nomeValido = false;
+
+                        //  NOME ----------------------------------------------
+
                         linha = br.readLine();
                         while (!nomeValido) {
                             try {
@@ -92,6 +97,9 @@ public class CadastroTest {
                                 System.out.println(e.getMessage());
                             }
                         }
+
+                        // TIPO -----------------------------------------------
+
                         linha = br.readLine();
                         boolean tipoPetValido = false;
                         while (!tipoPetValido) {
@@ -114,6 +122,9 @@ public class CadastroTest {
                         } else {
                             pet1.setTipoPet(TipoPet.GATO);
                         }
+
+                        // SEXO -----------------------------------------------
+
                         linha = br.readLine();
                         boolean tipoSexoValido = false;
                         while (!tipoSexoValido) {
@@ -136,6 +147,9 @@ public class CadastroTest {
                         } else {
                             pet1.setTipoSexo(TipoSexo.FEMEA);
                         }
+
+                        // ENDEREÇO -------------------------------------------
+
                         String numeroCasa = "";
                         String cidade = "";
                         String rua = "";
@@ -146,15 +160,15 @@ public class CadastroTest {
                                 System.out.println(linha);
                                 System.out.printf("Número da Casa: ");
                                 numeroCasa = entrada2.nextLine();
-                                System.out.println("Cidade: ");
+                                System.out.println("Cidade:  ");
                                 cidade = entrada2.nextLine();
                                 System.out.println("Rua: ");
                                 rua = entrada2.nextLine();
 
-                                if (!cidade.matches("[A-Za-z]+")) {
+                                if (!cidade.matches("([a-zA-Z]+(\\s|$))+")) {
                                     throw new RuntimeException("Cidade Inválida.");
                                 }
-                                if (!rua.matches("[A-Za-z]+\\s[A-Za-z]+")) {
+                                if (!rua.matches("([a-zA-Z]+(\\s|$))+")) {
                                     throw new RuntimeException("Rua Inválida.");
                                 }
                                 if (numeroCasa.matches("")) {
@@ -170,11 +184,75 @@ public class CadastroTest {
                             }
                         }
                         pet1.setEndereco(rua.concat(", " + numeroCasa).concat(", " + cidade));
-                        System.out.println(pet1.getNome());
-                        System.out.println(pet1.getTipoPet().getNome());
-                        System.out.println(pet1.getTipoSexo().getNome());
-                        System.out.println(pet1.getEndereco());
 
+                        // IDADE ---------------------------------------------
+
+                        linha = br.readLine();
+                        boolean idadeValida = false;
+                        while (!idadeValida) {
+                            try {
+                                System.out.println(linha);
+                                System.out.println("Digite 0 caso tenha menos de 1 ano.");
+                                idade = entrada2.nextDouble();
+
+                                if (idade == 0) {
+                                    double idadeEmAnos;
+                                    System.out.println("Digite a idade em meses aproximados: ");
+                                    idade = entrada2.nextDouble();
+                                    idadeEmAnos = idade / 12.0;
+                                    idadeValida = true;
+                                    idade = idadeEmAnos;
+                                }
+                                if (idade > 20) {
+                                    throw new RuntimeException("A Idade é inválida");
+                                }
+
+                                idadeValida = true;
+
+                            } catch (RuntimeException e) {
+                                System.out.println(e.getMessage());
+                            }
+                        }
+                        pet1.setIdade(idade);
+
+                        // RAÇA ---------------------------------------------
+
+                        linha = br.readLine();
+                        boolean pesoValido = false;
+                        while (!pesoValido) {
+                            try {
+                                System.out.println(linha);
+                                peso = entrada2.nextDouble();
+
+                                if (peso < 0.5 || peso > 60) {
+                                    throw new RuntimeException("Peso Inválido");
+                                }
+                                pesoValido = true;
+                            } catch (RuntimeException e) {
+                                System.out.println(e.getMessage());
+                            }
+                        }
+                        pet1.setPeso(peso);
+
+                        // RAÇA --------------------------------------------
+
+                        linha = br.readLine();
+                        boolean racaValida = false;
+                        entrada2.nextLine();
+                        while (!racaValida) {
+                            try {
+                                System.out.println(linha);
+                                raca = entrada2.nextLine();
+
+                                if (!(raca.matches("([a-zA-Z]+(\\s|$))+"))) {
+                                    throw new RuntimeException("Raça Inválida");
+                                }
+                                racaValida = true;
+                            } catch (RuntimeException e) {
+                                System.out.println(e.getMessage());
+                            }
+                        }
+                        pet1.setRaca(raca);               // adicionar NAO INFORMADO nos que faltaram
 
                     } catch (IOException e) {
                         throw new RuntimeException(e);
