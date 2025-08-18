@@ -8,6 +8,7 @@ public class Pet {
     private double idade;
     private double peso;
     private String raca;
+    private static final String NAO_INFORMADO = "NÃO INFORMADO";
 
     public Pet () {
 
@@ -28,8 +29,16 @@ public class Pet {
         System.out.println(this.tipoPet);
         System.out.println(this.tipoSexo);
         System.out.println(this.endereco);
-        System.out.println(this.idade);
-        System.out.println(this.peso);
+        if (this.idade == -1.0) {
+            System.out.println(NAO_INFORMADO);
+        } else {
+            System.out.println(this.idade);
+        }
+        if (peso == -1) {
+            System.out.printf(NAO_INFORMADO);
+        } else {
+            System.out.println(this.peso);
+        }
         System.out.println(this.raca);
     }
 

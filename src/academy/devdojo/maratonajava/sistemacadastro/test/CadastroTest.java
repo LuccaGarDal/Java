@@ -9,6 +9,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class CadastroTest {
+
     public static void main(String[] args) {
         File formulario = new File("formulario.txt");
         try (FileWriter fw = new FileWriter(formulario);
@@ -73,7 +74,7 @@ public class CadastroTest {
                         String tipoSexo = ".";
                         String raca = ".";
                         double peso = 0;
-                        double idade = 0;
+                        Double idade = 0.0;
                         boolean nomeValido = false;
 
                         //  NOME ----------------------------------------------
@@ -193,18 +194,29 @@ public class CadastroTest {
                             try {
                                 System.out.println(linha);
                                 System.out.println("Digite 0 caso tenha menos de 1 ano.");
-                                idade = entrada2.nextDouble();
+                                String entradaIdade = entrada2.nextLine();
+                                idade = 0.0;
 
-                                if (idade == 0) {
-                                    double idadeEmAnos;
-                                    System.out.println("Digite a idade em meses aproximados: ");
-                                    idade = entrada2.nextDouble();
-                                    idadeEmAnos = idade / 12.0;
+                                if (entradaIdade.isEmpty()) {
+                                    idade = -1.0;
                                     idadeValida = true;
-                                    idade = idadeEmAnos;
-                                }
-                                if (idade > 20) {
-                                    throw new RuntimeException("A Idade é inválida");
+
+                                } else {
+                                    double idadeNum = Double.parseDouble(entradaIdade);
+                                    if (idadeNum == 0) {
+                                        double idadeEmAnos;
+                                        System.out.println("Digite a idade em meses aproximados: ");
+                                        idadeNum = entrada2.nextDouble();
+                                        idadeEmAnos = idadeNum / 12.0;
+                                        idadeValida = true;
+                                        idade = idadeEmAnos;
+                                    } else {
+                                        idade = idadeNum;
+                                    }
+                                    if (idadeNum > 20) {
+                                        throw new RuntimeException("A Idade é inválida");
+                                    }
+
                                 }
 
                                 idadeValida = true;
@@ -214,26 +226,37 @@ public class CadastroTest {
                             }
                         }
                         pet1.setIdade(idade);
+                        System.out.println(idade);
 
-                        // RAÇA ---------------------------------------------
+                        // PESO ---------------------------------------------
 
                         linha = br.readLine();
                         boolean pesoValido = false;
                         while (!pesoValido) {
                             try {
                                 System.out.println(linha);
-                                peso = entrada2.nextDouble();
+                                String entradaPeso = entrada2.nextLine();
+                                peso = 0.0;
 
-                                if (peso < 0.5 || peso > 60) {
-                                    throw new RuntimeException("Peso Inválido");
+                                if (entradaPeso.isEmpty()) {
+                                    peso = -1.0;
+                                    pesoValido = true;
+                                } else {
+                                    double pesoNum = Double.parseDouble(entradaPeso);
+                                    if (pesoNum < 0.5 || pesoNum > 60) {
+                                        throw new RuntimeException("Peso Inválido");
+                                    } else {
+                                        peso = pesoNum;
+                                    }
                                 }
                                 pesoValido = true;
+
                             } catch (RuntimeException e) {
                                 System.out.println(e.getMessage());
                             }
                         }
                         pet1.setPeso(peso);
-
+                        System.out.println(peso);
                         // RAÇA --------------------------------------------
 
                         linha = br.readLine();
@@ -253,6 +276,7 @@ public class CadastroTest {
                             }
                         }
                         pet1.setRaca(raca);               // adicionar NAO INFORMADO nos que faltaram
+                        pet1.imprimir();
 
                     } catch (IOException e) {
                         throw new RuntimeException(e);
