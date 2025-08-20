@@ -6,9 +6,12 @@ import academy.devdojo.maratonajava.sistemacadastro.dominio.TipoPet;
 import academy.devdojo.maratonajava.sistemacadastro.dominio.TipoSexo;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class CadastroTest {
+    private static final String NAO_INFORMADO = "NÃO INFORMADO";
 
     public static void main(String[] args) {
         File formulario = new File("formulario.txt");
@@ -226,7 +229,6 @@ public class CadastroTest {
                             }
                         }
                         pet1.setIdade(idade);
-                        System.out.println(idade);
 
                         // PESO ---------------------------------------------
 
@@ -261,7 +263,6 @@ public class CadastroTest {
 
                         linha = br.readLine();
                         boolean racaValida = false;
-                        entrada2.nextLine();
                         while (!racaValida) {
                             try {
                                 System.out.println(linha);
@@ -275,15 +276,51 @@ public class CadastroTest {
                                 System.out.println(e.getMessage());
                             }
                         }
-                        pet1.setRaca(raca);               // adicionar NAO INFORMADO nos que faltaram
-                        pet1.imprimir();
+                        pet1.setRaca(raca);
+                        LocalDateTime timeNow = LocalDateTime.now();
+                        DateTimeFormatter foramtter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmm");
+                        String horaFormatada = timeNow.format(foramtter);
+                        System.out.println(horaFormatada);
+
+                        String nomeFormatado = pet1.getNome().toUpperCase().replace(" ", "");
+                        File formularioRespostas = new File(horaFormatada + "-" + nomeFormatado + ".txt");
+                        try (FileWriter fw1 = new FileWriter(formularioRespostas);
+                        BufferedWriter bw1 = new BufferedWriter(fw1) ) {
+                            bw1.write(pet1.getNome());
+                            bw1.newLine();
+                            bw1.write(pet1.getTipoPet().getNome());
+                            bw1.newLine();
+                            bw1.write(pet1.getTipoSexo().getNome());
+                            bw1.newLine();
+                            bw1.write(rua);
+                            bw1.write(numeroCasa);
+                            bw1.write(cidade);
+                            bw1.newLine();
+                            if (pet1.getIdade() == -1.0) {
+                                bw1.write(NAO_INFORMADO);
+                            } else {
+                                bw1.write(String.valueOf(pet1.getIdade()));
+                            }
+                            bw1.newLine();
+                            if (pet1.getPeso() == -1.0) {
+                                bw1.write(NAO_INFORMADO);
+                            } else {
+                                bw1.write(String.valueOf(pet1.getPeso()));
+                            }
+                            bw1.newLine();
+                            bw1.write(pet1.getRaca());
+                        }
+
+
+
+
 
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case 2:
-                    System.out.println("Opção Indisponível");
+
                 case 3:
                     System.out.println("Opção Indisponível");
                 case 4:
