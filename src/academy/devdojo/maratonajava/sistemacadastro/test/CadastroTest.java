@@ -210,9 +210,10 @@ public class CadastroTest {
                                         double idadeEmAnos;
                                         System.out.println("Digite a idade em meses aproximados: ");
                                         idadeNum = entrada2.nextDouble();
+                                        entrada2.nextLine();
                                         idadeEmAnos = idadeNum / 12.0;
-                                        idadeValida = true;
                                         idade = idadeEmAnos;
+                                        idadeValida = true;
                                     } else {
                                         idade = idadeNum;
                                     }
@@ -258,7 +259,7 @@ public class CadastroTest {
                             }
                         }
                         pet1.setPeso(peso);
-                        System.out.println(peso);
+
                         // RAÇA --------------------------------------------
 
                         linha = br.readLine();
@@ -268,51 +269,60 @@ public class CadastroTest {
                                 System.out.println(linha);
                                 raca = entrada2.nextLine();
 
-                                if (!(raca.matches("([a-zA-Z]+(\\s|$))+"))) {
-                                    throw new RuntimeException("Raça Inválida");
+                                if (raca.trim().isEmpty()) {
+                                    raca = NAO_INFORMADO;
+                                } else if (!(raca.matches("([a-zA-Z]+(\\s|$))+"))) {
+                                        throw new RuntimeException("Raça Inválida");
                                 }
+
                                 racaValida = true;
                             } catch (RuntimeException e) {
                                 System.out.println(e.getMessage());
                             }
                         }
                         pet1.setRaca(raca);
+
+                        // Definindo Tempo
+
                         LocalDateTime timeNow = LocalDateTime.now();
                         DateTimeFormatter foramtter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmm");
                         String horaFormatada = timeNow.format(foramtter);
-                        System.out.println(horaFormatada);
 
+
+                        // Escrevendo respostas no arquivo
+
+                        //C:\Users\Jefersonm\Documents\JAVA\maratona-java\src\academy\devdojo\maratonajava\sistemacadastro\petsCadastrados
+
+                        File petsCadastrados = new File("petsCadastrados");
+                        petsCadastrados.mkdir();
                         String nomeFormatado = pet1.getNome().toUpperCase().replace(" ", "");
-                        File formularioRespostas = new File(horaFormatada + "-" + nomeFormatado + ".txt");
+                        File formularioRespostas = new File(petsCadastrados, horaFormatada + "-" + nomeFormatado + ".txt");
                         try (FileWriter fw1 = new FileWriter(formularioRespostas);
-                        BufferedWriter bw1 = new BufferedWriter(fw1) ) {
+                             BufferedWriter bw1 = new BufferedWriter(fw1)) {
                             bw1.write(pet1.getNome());
                             bw1.newLine();
                             bw1.write(pet1.getTipoPet().getNome());
                             bw1.newLine();
                             bw1.write(pet1.getTipoSexo().getNome());
                             bw1.newLine();
-                            bw1.write(rua);
-                            bw1.write(numeroCasa);
-                            bw1.write(cidade);
+                            bw1.write(pet1.getEndereco());
                             bw1.newLine();
                             if (pet1.getIdade() == -1.0) {
                                 bw1.write(NAO_INFORMADO);
                             } else {
-                                bw1.write(String.valueOf(pet1.getIdade()));
+                                bw1.write(String.valueOf(pet1.getIdade()) + " anos");
                             }
                             bw1.newLine();
                             if (pet1.getPeso() == -1.0) {
                                 bw1.write(NAO_INFORMADO);
                             } else {
-                                bw1.write(String.valueOf(pet1.getPeso()));
+                                bw1.write(String.valueOf(pet1.getPeso()) + " KG");
                             }
                             bw1.newLine();
                             bw1.write(pet1.getRaca());
                         }
 
-
-
+                        System.out.println("Pet cadastrado com sucesso!");
 
 
                     } catch (IOException e) {
@@ -320,7 +330,37 @@ public class CadastroTest {
                     }
                     break;
                 case 2:
+                    Scanner pesquisar = new Scanner(System.in);
+                    int criterioTipoPet;
+                    int opcaoPesquisa;
+                    String pesquisaNome = "";
+                    System.out.println("Qual o tipo do pet que você está procurando? ");
+                    System.out.println("1 - Cachorro");
+                    System.out.println("2 - Gato");
+                    criterioTipoPet = pesquisar.nextInt();
+                    System.out.println("Qual critério deseja usar para char seu pet?");
+                    System.out.println("1 - Nome");
+                    System.out.println("2 - Sexo");
+                    System.out.println("3 - Endereço");
+                    System.out.println("4 - Idade");
+                    System.out.println("5 - Peso");
+                    System.out.println("6 - Raça");
+                    System.out.println("7 - Utilizar dois critérios");
+                    opcaoPesquisa = pesquisar.nextInt();
+                    pesquisar.nextLine();
 
+                    if (criterioTipoPet == 1) {
+                        switch (opcaoPesquisa) {
+                            case 1:
+                                System.out.println("Digite o nome: ");
+                                pesquisaNome = pesquisar.nextLine();
+                                pesquisaNome = pesquisaNome.toLowerCase();
+                                System.out.println(pesquisaNome);
+
+
+                        }
+                    }
+                    break;
                 case 3:
                     System.out.println("Opção Indisponível");
                 case 4:
