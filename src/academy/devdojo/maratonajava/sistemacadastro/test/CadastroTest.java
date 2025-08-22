@@ -354,8 +354,21 @@ public class CadastroTest {
                             case 1:
                                 System.out.println("Digite o nome: ");
                                 pesquisaNome = pesquisar.nextLine();
-                                pesquisaNome = pesquisaNome.toLowerCase();
-                                System.out.println(pesquisaNome);
+                                try (FileReader fr = new FileReader("C:\\Users\\Jefersonm\\Documents\\JAVA\\maratona-java\\petsCadastrados\\20250821T1526-LUCCAGARCIA.txt");
+                                     BufferedReader br = new BufferedReader(fr)) {
+                                    String linha;
+                                    String primeiraLinha = br.readLine();
+                                    if (primeiraLinha.matches(pesquisaNome)) {
+                                        System.out.print(primeiraLinha + " - ");
+                                        while ((linha = br.readLine()) != null) {
+                                            System.out.print(linha + " - ");
+                                        }
+                                    }
+
+
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
 
 
                         }
