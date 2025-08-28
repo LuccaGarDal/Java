@@ -14,6 +14,14 @@ import java.util.Scanner;
 
 
 public class CadastroTest {
+
+    public static String normalize(String input) {
+        if (input == null) return "";
+        return Normalizer.normalize(input, Normalizer.Form.NFD) // separa letras de acentos
+                .replaceAll("\\p{M}", "")              // remove os acentos
+                .toLowerCase();                        // deixa minúsculo
+    }
+
     private static final String NAO_INFORMADO = "NÃO INFORMADO";
 
     public static void main(String[] args) {
@@ -336,7 +344,6 @@ public class CadastroTest {
                     Scanner pesquisar = new Scanner(System.in);
                     int criterioTipoPet;
                     int opcaoPesquisa;
-                    String pesquisaNome = "";
                     System.out.println("Qual o tipo do pet que você está procurando? ");
                     System.out.println("1 - Cachorro");
                     System.out.println("2 - Gato");
@@ -351,34 +358,76 @@ public class CadastroTest {
                     System.out.println("7 - Utilizar dois critérios");
                     opcaoPesquisa = pesquisar.nextInt();
                     pesquisar.nextLine();
-
-                    if (criterioTipoPet == 1) {
+                    File pastaPet = new File("C:\\Users\\Jefersonm\\Documents\\JAVA\\maratona-java\\petsCadastrados");
+                    File [] arquivos = pastaPet.listFiles();
                         switch (opcaoPesquisa) {
                             case 1:
+                                String pesquisaNome = "";
                                 System.out.println("Digite o nome: ");
                                 pesquisaNome = pesquisar.nextLine();
-                                File pastaPet = new File("C:\\Users\\Jefersonm\\Documents\\JAVA\\maratona-java\\petsCadastrados");
-                                File [] arquivos = pastaPet.listFiles();
+
 
                                 if (pesquisaNome != null) {
+                                    System.out.println("-------Pets Encontrados-------");
                                     for (File arq : arquivos) {
                                         try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
                                             String linha;
                                             String primeiraLinha = br.readLine();
+                                            String segundaLinha = br.readLine();
+                                            String terceiraLinha = br.readLine();
+                                            String quartaLinha = br.readLine();
+                                            String quintaLinha = br.readLine();
+                                            String sextaLinha = br.readLine();
+                                            String setimaLinha = br.readLine();
 
-                                            if (primeiraLinha != null) {
+                                            if ((criterioTipoPet == 1 && segundaLinha.equalsIgnoreCase("cachorro"))
+                                            || (criterioTipoPet == 2 && segundaLinha.equalsIgnoreCase("gato"))) {
+                                                if (primeiraLinha != null && normalize(primeiraLinha).contains(normalize(pesquisaNome))) {
 
+                                                    System.out.print(primeiraLinha + " - ");
+                                                    System.out.print(segundaLinha + " - ");
+                                                    System.out.print(terceiraLinha + " - ");
+                                                    System.out.print(quartaLinha + " - ");
+                                                    System.out.print(quintaLinha + " - ");
+                                                    System.out.print(sextaLinha + " - ");
+                                                    System.out.print(setimaLinha + " - ");
+                                                    System.out.println("\n");
+
+
+                                                }
+
+                                            } else {
+                                                System.out.println("NÃO FORAM ENCONTRADOS PETS COM ESSAS CARACTERÍSTICAS");
+                                                break;
                                             }
+
+
                                         } catch (IOException e) {
                                             throw new RuntimeException();
                                         }
                                     }
                                 }
+                            case 2:
+                                String pesquisaSexo = "";
+                                System.out.println("Digite o sexo: ");
+                                pesquisaSexo = pesquisar.nextLine();
+                                System.out.println(pesquisaSexo);
+
+                                if (pesquisaSexo != null) {
+                                    for (File arq : arquivos) {
+                                        try (BufferedReader br = new BufferedReader(new FileReader(arq))){
+                                            String primeiraLinha = br.readLine();
+                                        } catch (IOException e) {
+                                            throw new RuntimeException("Erro ao ler o arquivo");
+                                        }
+                                    }
+                                }
+
 
 
                         }
-                    }
                     break;
+
                 case 3:
                     System.out.println("Opção Indisponível");
                 case 4:
