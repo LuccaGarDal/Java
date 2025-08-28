@@ -6,9 +6,12 @@ import academy.devdojo.maratonajava.sistemacadastro.dominio.TipoPet;
 import academy.devdojo.maratonajava.sistemacadastro.dominio.TipoSexo;
 
 import java.io.*;
+import java.nio.Buffer;
+import java.text.Normalizer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+
 
 public class CadastroTest {
     private static final String NAO_INFORMADO = "NÃO INFORMADO";
@@ -354,20 +357,22 @@ public class CadastroTest {
                             case 1:
                                 System.out.println("Digite o nome: ");
                                 pesquisaNome = pesquisar.nextLine();
-                                try (FileReader fr = new FileReader("C:\\Users\\Jefersonm\\Documents\\JAVA\\maratona-java\\petsCadastrados\\20250821T1526-LUCCAGARCIA.txt");
-                                     BufferedReader br = new BufferedReader(fr)) {
-                                    String linha;
-                                    String primeiraLinha = br.readLine();
-                                    if (primeiraLinha.matches(pesquisaNome)) {
-                                        System.out.print(primeiraLinha + " - ");
-                                        while ((linha = br.readLine()) != null) {
-                                            System.out.print(linha + " - ");
+                                File pastaPet = new File("C:\\Users\\Jefersonm\\Documents\\JAVA\\maratona-java\\petsCadastrados");
+                                File [] arquivos = pastaPet.listFiles();
+
+                                if (pesquisaNome != null) {
+                                    for (File arq : arquivos) {
+                                        try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
+                                            String linha;
+                                            String primeiraLinha = br.readLine();
+
+                                            if (primeiraLinha != null) {
+
+                                            }
+                                        } catch (IOException e) {
+                                            throw new RuntimeException();
                                         }
                                     }
-
-
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
                                 }
 
 
