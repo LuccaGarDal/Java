@@ -371,7 +371,6 @@ public class CadastroTest {
                                     System.out.println("-------Pets Encontrados-------");
                                     for (File arq : arquivos) {
                                         try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
-                                            String linha;
                                             String primeiraLinha = br.readLine();
                                             String segundaLinha = br.readLine();
                                             String terceiraLinha = br.readLine();
@@ -396,10 +395,8 @@ public class CadastroTest {
 
                                                 }
 
-                                            } else {
-                                                System.out.println("NÃO FORAM ENCONTRADOS PETS COM ESSAS CARACTERÍSTICAS");
-                                                break;
                                             }
+
 
 
                                         } catch (IOException e) {
@@ -407,22 +404,74 @@ public class CadastroTest {
                                         }
                                     }
                                 }
+                                break;
                             case 2:
                                 String pesquisaSexo = "";
                                 System.out.println("Digite o sexo: ");
                                 pesquisaSexo = pesquisar.nextLine();
-                                System.out.println(pesquisaSexo);
 
                                 if (pesquisaSexo != null) {
+                                    System.out.println("-------Pets Encontrados-------");
                                     for (File arq : arquivos) {
                                         try (BufferedReader br = new BufferedReader(new FileReader(arq))){
                                             String primeiraLinha = br.readLine();
+                                            String segundaLinha = br.readLine();
+                                            String terceiraLinha = br.readLine();
+                                            String quartaLinha = br.readLine();
+                                            String quintaLinha = br.readLine();
+                                            String sextaLinha = br.readLine();
+                                            String setimaLinha = br.readLine();
+                                            String [] linhas = {primeiraLinha, segundaLinha, terceiraLinha, quartaLinha, quintaLinha, sextaLinha, setimaLinha};
+
+                                            if ((criterioTipoPet == 1 && segundaLinha.equalsIgnoreCase("cachorro"))
+                                            || (criterioTipoPet == 2 && segundaLinha.equalsIgnoreCase("gato"))) {
+                                                if (terceiraLinha != null && normalize(terceiraLinha).contains(normalize(pesquisaSexo))){
+                                                    for (String lin : linhas) {
+                                                        System.out.print(lin + " - ");
+                                                    }
+                                                    System.out.println("\n");
+
+                                                }
+                                            }
+
                                         } catch (IOException e) {
                                             throw new RuntimeException("Erro ao ler o arquivo");
                                         }
                                     }
                                 }
+                                break;
+                            case 3:
+                                String pesquisaEndereco;
+                                System.out.println("Digite o endereço: ");
+                                pesquisaEndereco = pesquisar.nextLine();
 
+                                if (pesquisaEndereco != null) {
+                                    System.out.println("-------Pets Encontrados-------");
+                                    for (File arq : arquivos) {
+                                        try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
+                                            String primeiraLinha = br.readLine();
+                                            String segundaLinha = br.readLine();
+                                            String terceiraLinha = br.readLine();
+                                            String quartaLinha = br.readLine();
+                                            String quintaLinha = br.readLine();
+                                            String sextaLinha = br.readLine();
+                                            String setimaLinha = br.readLine();
+                                            String [] linhas = {primeiraLinha, segundaLinha, terceiraLinha, quartaLinha, quintaLinha, sextaLinha, setimaLinha};
+
+                                            if ((criterioTipoPet == 1 && segundaLinha.equalsIgnoreCase("cachorro"))
+                                            || (criterioTipoPet == 2 && segundaLinha.equalsIgnoreCase("gato"))) {
+                                                if (quartaLinha != null && normalize(quartaLinha).contains(normalize(pesquisaEndereco))) {
+                                                    for (String lin : linhas) {
+                                                        System.out.print(lin + " - ");
+                                                    }
+                                                    System.out.println("\n");
+                                                }
+                                            }
+                                        } catch (IOException e) {
+                                            throw new RuntimeException("Erro ao criar");
+                                        }
+                                    }
+                                }
 
 
                         }
