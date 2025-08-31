@@ -283,7 +283,7 @@ public class CadastroTest {
                                 if (raca.trim().isEmpty()) {
                                     raca = NAO_INFORMADO;
                                 } else if (!(raca.matches("([a-zA-Z]+(\\s|$))+"))) {
-                                        throw new RuntimeException("Raça Inválida");
+                                    throw new RuntimeException("Raça Inválida");
                                 }
 
                                 racaValida = true;
@@ -358,123 +358,156 @@ public class CadastroTest {
                     System.out.println("7 - Utilizar dois critérios");
                     opcaoPesquisa = pesquisar.nextInt();
                     pesquisar.nextLine();
-                    File pastaPet = new File("C:\\Users\\Jefersonm\\Documents\\JAVA\\maratona-java\\petsCadastrados");
-                    File [] arquivos = pastaPet.listFiles();
-                        switch (opcaoPesquisa) {
-                            case 1:
-                                String pesquisaNome = "";
-                                System.out.println("Digite o nome: ");
-                                pesquisaNome = pesquisar.nextLine();
+                    File pastaPet = new File("C:\\Users\\Lucca\\IdeaProjects\\Java\\petsCadastrados");
+                    File[] arquivos = pastaPet.listFiles();
+                    switch (opcaoPesquisa) {
+                        case 1:
+                            String pesquisaNome = "";
+                            System.out.println("Digite o nome: ");
+                            pesquisaNome = pesquisar.nextLine();
 
 
-                                if (pesquisaNome != null) {
-                                    System.out.println("-------Pets Encontrados-------");
-                                    for (File arq : arquivos) {
-                                        try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
-                                            String primeiraLinha = br.readLine();
-                                            String segundaLinha = br.readLine();
-                                            String terceiraLinha = br.readLine();
-                                            String quartaLinha = br.readLine();
-                                            String quintaLinha = br.readLine();
-                                            String sextaLinha = br.readLine();
-                                            String setimaLinha = br.readLine();
+                            if (pesquisaNome != null) {
+                                System.out.println("-------Pets Encontrados-------");
+                                for (File arq : arquivos) {
+                                    try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
+                                        String primeiraLinha = br.readLine();
+                                        String segundaLinha = br.readLine();
+                                        String terceiraLinha = br.readLine();
+                                        String quartaLinha = br.readLine();
+                                        String quintaLinha = br.readLine();
+                                        String sextaLinha = br.readLine();
+                                        String setimaLinha = br.readLine();
 
-                                            if ((criterioTipoPet == 1 && segundaLinha.equalsIgnoreCase("cachorro"))
-                                            || (criterioTipoPet == 2 && segundaLinha.equalsIgnoreCase("gato"))) {
-                                                if (primeiraLinha != null && normalize(primeiraLinha).contains(normalize(pesquisaNome))) {
+                                        if ((criterioTipoPet == 1 && segundaLinha.equalsIgnoreCase("cachorro"))
+                                                || (criterioTipoPet == 2 && segundaLinha.equalsIgnoreCase("gato"))) {
+                                            if (primeiraLinha != null && normalize(primeiraLinha).contains(normalize(pesquisaNome))) {
 
-                                                    System.out.print(primeiraLinha + " - ");
-                                                    System.out.print(segundaLinha + " - ");
-                                                    System.out.print(terceiraLinha + " - ");
-                                                    System.out.print(quartaLinha + " - ");
-                                                    System.out.print(quintaLinha + " - ");
-                                                    System.out.print(sextaLinha + " - ");
-                                                    System.out.print(setimaLinha + " - ");
-                                                    System.out.println("\n");
+                                                System.out.print(primeiraLinha + " - ");
+                                                System.out.print(segundaLinha + " - ");
+                                                System.out.print(terceiraLinha + " - ");
+                                                System.out.print(quartaLinha + " - ");
+                                                System.out.print(quintaLinha + " - ");
+                                                System.out.print(sextaLinha + " - ");
+                                                System.out.print(setimaLinha + " - ");
+                                                System.out.println("\n");
 
-
-                                                }
 
                                             }
 
-
-
-                                        } catch (IOException e) {
-                                            throw new RuntimeException();
                                         }
+
+
+                                    } catch (IOException e) {
+                                        throw new RuntimeException();
                                     }
                                 }
-                                break;
-                            case 2:
-                                String pesquisaSexo = "";
-                                System.out.println("Digite o sexo: ");
-                                pesquisaSexo = pesquisar.nextLine();
+                            }
+                            break;
+                        case 2:
+                            String pesquisaSexo = "";
+                            System.out.println("Digite o sexo: ");
+                            pesquisaSexo = pesquisar.nextLine();
 
-                                if (pesquisaSexo != null) {
-                                    System.out.println("-------Pets Encontrados-------");
-                                    for (File arq : arquivos) {
-                                        try (BufferedReader br = new BufferedReader(new FileReader(arq))){
-                                            String primeiraLinha = br.readLine();
-                                            String segundaLinha = br.readLine();
-                                            String terceiraLinha = br.readLine();
-                                            String quartaLinha = br.readLine();
-                                            String quintaLinha = br.readLine();
-                                            String sextaLinha = br.readLine();
-                                            String setimaLinha = br.readLine();
-                                            String [] linhas = {primeiraLinha, segundaLinha, terceiraLinha, quartaLinha, quintaLinha, sextaLinha, setimaLinha};
+                            if (pesquisaSexo != null) {
+                                System.out.println("-------Pets Encontrados-------");
+                                for (File arq : arquivos) {
+                                    try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
+                                        String primeiraLinha = br.readLine();
+                                        String segundaLinha = br.readLine();
+                                        String terceiraLinha = br.readLine();
+                                        String quartaLinha = br.readLine();
+                                        String quintaLinha = br.readLine();
+                                        String sextaLinha = br.readLine();
+                                        String setimaLinha = br.readLine();
+                                        String[] linhas = {primeiraLinha, segundaLinha, terceiraLinha, quartaLinha, quintaLinha, sextaLinha, setimaLinha};
 
-                                            if ((criterioTipoPet == 1 && segundaLinha.equalsIgnoreCase("cachorro"))
-                                            || (criterioTipoPet == 2 && segundaLinha.equalsIgnoreCase("gato"))) {
-                                                if (terceiraLinha != null && normalize(terceiraLinha).contains(normalize(pesquisaSexo))){
-                                                    for (String lin : linhas) {
-                                                        System.out.print(lin + " - ");
-                                                    }
-                                                    System.out.println("\n");
-
+                                        if ((criterioTipoPet == 1 && segundaLinha.equalsIgnoreCase("cachorro"))
+                                                || (criterioTipoPet == 2 && segundaLinha.equalsIgnoreCase("gato"))) {
+                                            if (terceiraLinha != null && normalize(terceiraLinha).contains(normalize(pesquisaSexo))) {
+                                                for (String lin : linhas) {
+                                                    System.out.print(lin + " - ");
                                                 }
-                                            }
+                                                System.out.println("\n");
 
-                                        } catch (IOException e) {
-                                            throw new RuntimeException("Erro ao ler o arquivo");
+                                            }
                                         }
+
+                                    } catch (IOException e) {
+                                        throw new RuntimeException("Erro ao ler o arquivo");
                                     }
                                 }
-                                break;
-                            case 3:
-                                String pesquisaEndereco;
-                                System.out.println("Digite o endereço: ");
-                                pesquisaEndereco = pesquisar.nextLine();
+                            }
+                            break;
+                        case 3:
+                            String pesquisaEndereco;
+                            System.out.println("Digite o endereço: ");
+                            pesquisaEndereco = pesquisar.nextLine();
 
-                                if (pesquisaEndereco != null) {
-                                    System.out.println("-------Pets Encontrados-------");
-                                    for (File arq : arquivos) {
-                                        try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
-                                            String primeiraLinha = br.readLine();
-                                            String segundaLinha = br.readLine();
-                                            String terceiraLinha = br.readLine();
-                                            String quartaLinha = br.readLine();
-                                            String quintaLinha = br.readLine();
-                                            String sextaLinha = br.readLine();
-                                            String setimaLinha = br.readLine();
-                                            String [] linhas = {primeiraLinha, segundaLinha, terceiraLinha, quartaLinha, quintaLinha, sextaLinha, setimaLinha};
+                            if (pesquisaEndereco != null) {
+                                System.out.println("-------Pets Encontrados-------");
+                                for (File arq : arquivos) {
+                                    try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
+                                        String primeiraLinha = br.readLine();
+                                        String segundaLinha = br.readLine();
+                                        String terceiraLinha = br.readLine();
+                                        String quartaLinha = br.readLine();
+                                        String quintaLinha = br.readLine();
+                                        String sextaLinha = br.readLine();
+                                        String setimaLinha = br.readLine();
+                                        String[] linhas = {primeiraLinha, segundaLinha, terceiraLinha, quartaLinha, quintaLinha, sextaLinha, setimaLinha};
 
-                                            if ((criterioTipoPet == 1 && segundaLinha.equalsIgnoreCase("cachorro"))
-                                            || (criterioTipoPet == 2 && segundaLinha.equalsIgnoreCase("gato"))) {
-                                                if (quartaLinha != null && normalize(quartaLinha).contains(normalize(pesquisaEndereco))) {
-                                                    for (String lin : linhas) {
-                                                        System.out.print(lin + " - ");
-                                                    }
-                                                    System.out.println("\n");
+                                        if ((criterioTipoPet == 1 && segundaLinha.equalsIgnoreCase("cachorro"))
+                                                || (criterioTipoPet == 2 && segundaLinha.equalsIgnoreCase("gato"))) {
+                                            if (quartaLinha != null && normalize(quartaLinha).contains(normalize(pesquisaEndereco))) {
+                                                for (String lin : linhas) {
+                                                    System.out.print(lin + " - ");
                                                 }
+                                                System.out.println("\n");
                                             }
-                                        } catch (IOException e) {
-                                            throw new RuntimeException("Erro ao criar");
                                         }
+                                    } catch (IOException e) {
+                                        throw new RuntimeException("Erro ao criar");
                                     }
                                 }
+                            }
+                            break;
+                        case 4:
+                            String pesquisaIdade;
+                            System.out.println("Digite a idade do pet em anos: ");
+                            pesquisaIdade = pesquisar.nextLine();
+
+                            if (pesquisaIdade != null) {
+                                for (File arq : arquivos) {
+                                    try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
+                                        String primeiraLinha = br.readLine();
+                                        String segundaLinha = br.readLine();
+                                        String terceiraLinha = br.readLine();
+                                        String quartaLinha = br.readLine();
+                                        String quintaLinha = br.readLine();
+                                        String sextaLinha = br.readLine();
+                                        String setimaLinha = br.readLine();
+                                        String[] linhas = {primeiraLinha, segundaLinha, terceiraLinha, quartaLinha, quintaLinha, sextaLinha, setimaLinha};
+
+                                        if ((criterioTipoPet == 1 && segundaLinha.equalsIgnoreCase("cachorro"))
+                                                || (criterioTipoPet == 2 && segundaLinha.equalsIgnoreCase("gato"))) {
+                                            if (quintaLinha != null && normalize(quintaLinha).contains(normalize(pesquisaIdade))) {
+                                                for (String lin : linhas) {
+                                                    System.out.print(lin + " - ");
+                                                }
+                                                System.out.println("\n");
+
+                                            }
+                                        }
+                                    } catch (IOException e) {
+                                        throw new RuntimeException("Erro ao ler");
+                                    }
+                                }
+                            }
+                            break;
 
 
-                        }
+                    }
                     break;
 
                 case 3:
