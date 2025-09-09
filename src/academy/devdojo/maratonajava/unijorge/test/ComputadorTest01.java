@@ -4,7 +4,7 @@ import academy.devdojo.maratonajava.unijorge.dominio.Computador;
 
 import java.util.Scanner;
 
-public class ComputadorTest {
+public class ComputadorTest01 {
     static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
