@@ -17,7 +17,7 @@ public class Veiculo {
     }
 
     public void imprimir() {
-        System.out.println("Capaciade do Tanque: " + this.getCapacidadeTanque());
+        System.out.println("Capacidade do Tanque: " + this.getCapacidadeTanque());
         System.out.println("Preço: " + this.getPreco());
         System.out.println("Número de Passageiros: " + this.getNumeroPassageiros());
     }

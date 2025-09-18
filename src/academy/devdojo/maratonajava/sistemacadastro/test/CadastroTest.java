@@ -63,10 +63,10 @@ public class CadastroTest {
         while (opcao != 6) {
             System.out.println("\n MENU DE OPCÕES: ");
             System.out.println("1 - Cadastrar um novo pet");
-            System.out.println("2 - Alterar os dados do pet cadastrado");
+            System.out.println("2 - Listar pets por algum critério (idade, nome, raça) ");
             System.out.println("3 - Deletar um pet cadastrado");
             System.out.println("4 - Listar todos os pets cadastrados");
-            System.out.println("5 - Listar pets por algum critério (idade, nome, raça) ");
+            System.out.println("5 - Alterar os dados do pet cadastrado");
             System.out.println("6 - Sair");
             System.out.println("Digite o número correspondente a opção desejada: ");
             opcao = entrada.nextInt();
@@ -505,6 +505,37 @@ public class CadastroTest {
                                 }
                             }
                             break;
+                        case 5:
+                            String pesquisaPeso;
+                            System.out.println("Digite o peso do pet (em quilos): ");
+                            pesquisaPeso = pesquisar.nextLine();
+
+                            if(pesquisaPeso != null) {
+                                for (File arq : arquivos) {
+                                    try (BufferedReader br = new BufferedReader(new FileReader(arq))) {
+                                        String primeiraLinha = br.readLine();
+                                        String segundaLinha = br.readLine();
+                                        String terceiraLinha = br.readLine();
+                                        String quartaLinha = br.readLine();
+                                        String quintaLinha = br.readLine();
+                                        String sextaLinha = br.readLine();
+                                        String setimaLinha = br.readLine();
+                                        String[] linhas = {primeiraLinha, segundaLinha, terceiraLinha, quartaLinha, quintaLinha, sextaLinha, setimaLinha};
+
+                                        if ((criterioTipoPet == 1 && segundaLinha.equalsIgnoreCase("cachorro"))
+                                                || (criterioTipoPet == 2 && segundaLinha.equalsIgnoreCase("gato"))) {
+                                            if (quintaLinha != null && normalize(sextaLinha).contains(normalize(pesquisaPeso))) {
+                                                for (String lin : linhas){
+                                                    System.out.print(lin + " - ");
+                                                }
+                                                System.out.println("\n");
+                                            }
+                                        }
+                                    } catch (IOException e) {
+                                        throw new RuntimeException();
+                                    }
+                                }
+                            }
 
 
                     }

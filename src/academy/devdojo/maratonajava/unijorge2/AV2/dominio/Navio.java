@@ -80,7 +80,7 @@ public class Navio extends Veiculo {
                 this.dataLancamento = scan.nextLine();
                 valido = true;
             } catch (Exception e) {
-                System.out.println("Erro: digite uma data válido!");
+                System.out.println("Erro: digite uma data válida!");
                 scan.nextLine();
             }
         }
