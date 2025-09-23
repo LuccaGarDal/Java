@@ -28,6 +28,7 @@ public class Aluno implements Serializable {
                 '}';
     }
 
+    @Serial
     private void writeObject (ObjectOutputStream oos) {
         try {
             oos.defaultWriteObject();
@@ -37,6 +38,7 @@ public class Aluno implements Serializable {
         }
     }
 
+    @Serial
     private void readObject (ObjectInputStream ois) {
         try {
             ois.defaultReadObject();

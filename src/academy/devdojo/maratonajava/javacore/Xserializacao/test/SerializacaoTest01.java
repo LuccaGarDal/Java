@@ -11,7 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class SerializacaoTest01 {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         Aluno aluno = new Aluno(1L, "Lucca", "123456");
         Turma turma = new Turma("Turma do pagode");
         aluno.setTurma(turma);

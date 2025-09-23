@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class PathTest01 {
-    static void main() {
+    public static void main() {
         Path p1 = Paths.get("C:\\Users\\Lucca\\IdeaProjects\\Java\\formulario.txt");
         Path p2 = Paths.get("C:\\Users\\Lucca\\IdeaProjects\\Java", "formulario.txt");
         Path p3 = Paths.get("C:", "Users", "Lucca", "IdeaProjects", "Java", "formulario.txt");
@@ -14,3 +14,4 @@ public class PathTest01 {
 
     }
 }
+
