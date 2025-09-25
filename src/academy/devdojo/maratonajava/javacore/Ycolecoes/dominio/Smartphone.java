@@ -9,6 +9,15 @@ public class Smartphone {
         this.nome = nome;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (this == obj) return true;
+        if (this.getClass() != obj.getClass()) return false;
+        Smartphone smartphone = (Smartphone) obj;
+        return serialNumber != null && serialNumber.equals(smartphone.serialNumber);
+    }
+
     public String getSerialNumber() {
         return serialNumber;
     }
