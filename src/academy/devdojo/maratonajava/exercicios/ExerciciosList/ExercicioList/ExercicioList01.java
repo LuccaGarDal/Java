@@ -1,7 +1,6 @@
-package academy.devdojo.maratonajava.exercicios.ExerciciosList;
+package academy.devdojo.maratonajava.exercicios.ExerciciosList.ExercicioList;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ExercicioList01 {

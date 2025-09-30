@@ -1,4 +1,4 @@
-package academy.devdojo.maratonajava.exercicios.ExerciciosList;
+package academy.devdojo.maratonajava.exercicios.ExerciciosList.ExercicioList;
 
 import java.util.ArrayList;
 import java.util.Collections;
