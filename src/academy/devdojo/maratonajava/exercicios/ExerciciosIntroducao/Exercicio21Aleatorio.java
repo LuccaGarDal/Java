@@ -1,4 +1,4 @@
-package academy.devdojo.maratonajava.exercicios;
+package academy.devdojo.maratonajava.exercicios.ExerciciosIntroducao;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package academy.devdojo.maratonajava.exercicios;
+package academy.devdojo.maratonajava.exercicios.ExerciciosIntroducao;
 
 public class Exercicio19Tabuada {
     public static void main(String[] args) {
