@@ -15,7 +15,5 @@ public class HashSetExercicio02 {
         for (Aluno aluno : alunos) {
             System.out.println(aluno);
         }
-
-
     }
 }
