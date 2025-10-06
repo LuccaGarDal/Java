@@ -1,4 +1,4 @@
-package academy.devdojo.maratonajava.exercicios.ExercicioQueue;
+package academy.devdojo.maratonajava.exercicios.ExercicioGenerics;
 
 import java.util.ArrayList;
 import java.util.List;
