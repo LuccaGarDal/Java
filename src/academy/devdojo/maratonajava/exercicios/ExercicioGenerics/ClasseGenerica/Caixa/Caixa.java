@@ -1,4 +1,4 @@
-package academy.devdojo.maratonajava.exercicios.ExercicioGenerics.ClasseGenerica;
+package academy.devdojo.maratonajava.exercicios.ExercicioGenerics.ClasseGenerica.Caixa;
 
 public class Caixa<T> {
     private T valor;
