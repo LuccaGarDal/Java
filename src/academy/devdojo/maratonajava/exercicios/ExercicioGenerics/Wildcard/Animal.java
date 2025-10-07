@@ -1,4 +1,4 @@
-package academy.devdojo.maratonajava.exercicios.ExercicioGenerics;
+package academy.devdojo.maratonajava.exercicios.ExercicioGenerics.Wildcard;
 
 public class Animal {
     public String nome;
