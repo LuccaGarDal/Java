@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class Lambda01 {
+public class Lambda02 {
     static void main(String[] args) {
         List<String> nomes = new ArrayList<>();
         nomes.add("Lucca");
@@ -13,7 +13,9 @@ public class Lambda01 {
         nomes.add("Gabriel");
         nomes.add("Vinicius");
 
-        nomes.forEach(n -> System.out.println(n));
-    }
+        nomes.sort((a, b) -> Integer.compare(a.length(), b.length()));
 
+        System.out.println(nomes);
+        
+    }
 }
