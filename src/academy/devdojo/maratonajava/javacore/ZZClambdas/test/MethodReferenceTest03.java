@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 
-public class MethodReferenceTest04 {
+public class MethodReferenceTest03 {
     static void main(String[] args) {
         List<String> nomes = new ArrayList<>(List.of("Lucca", "Ions", "Jous"));
         nomes.sort(String::compareTo);
