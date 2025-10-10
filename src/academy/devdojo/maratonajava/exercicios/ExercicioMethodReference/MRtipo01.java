@@ -1,6 +1,7 @@
 package academy.devdojo.maratonajava.exercicios.ExercicioMethodReference;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Util {
@@ -22,6 +23,8 @@ public class MRtipo01 {
 
         List<String> nomes = new ArrayList<>(List.of("Luccaaaaaa", "Jous"));
         nomes.sort(Util::compareByLength);
+        System.out.println(nomes);
+        Collections.reverse(nomes);
         System.out.println(nomes);
 
     }
