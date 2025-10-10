@@ -23,6 +23,5 @@ public class MethodReferenceTest04 {
         BiFunction<String, Integer, Anime> biFunction = Anime::new;
         System.out.println(biFunction.apply("One piece", 1000));
 
-
     }
 }
