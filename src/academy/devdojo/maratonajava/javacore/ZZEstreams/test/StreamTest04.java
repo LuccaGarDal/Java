@@ -21,7 +21,7 @@ public class StreamTest04 {
             }
 
         }
-        System.out.println("---------------");
+        System.out.println("-------------");
         kingdom.stream()
                 .flatMap(Collection::stream)
                 .forEach(System.out::println);
