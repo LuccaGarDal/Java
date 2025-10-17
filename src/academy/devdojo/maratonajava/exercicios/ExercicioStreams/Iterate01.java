@@ -19,7 +19,17 @@ public class Iterate01 {
 
         Stream.iterate(new int[] {1,1}, s -> new int[] {s[1], s[0] + s[1]})
                 .limit(10)
-                .forEach(s -> System.out.println(s[0]));
+                .forEach(s -> System.out.print(s[0] + ", "));
+
+        System.out.println();
+        Stream.iterate(0, s-> s + 2)
+                .limit(10)
+                .reduce(Integer::sum)
+                .ifPresent(System.out::println);
+
+        Stream.iterate(0, s-> s + 1)
+                .limit(100)
+                .forEach(System.out::println);
 
     }
 }
