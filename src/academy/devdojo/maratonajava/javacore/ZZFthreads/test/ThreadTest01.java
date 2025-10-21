@@ -37,6 +37,11 @@ class ThreadExampleRunnable implements Runnable {
                 System.out.println();
             }
         }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 
@@ -47,6 +52,7 @@ public class ThreadTest01 {
         Thread t3 = new Thread(new ThreadExampleRunnable('c'));
         Thread t4 = new Thread(new ThreadExampleRunnable('d'));
 
+        t1.setPriority(Thread.MAX_PRIORITY);
         t1.start();
         t2.start();
         t3.start();
