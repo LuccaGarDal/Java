@@ -20,21 +20,24 @@ public class ThreadAccountTest01 implements Runnable {
         for (int i = 0; i < 5; i++) {
             withdrawal(10);
             if (account.getBalance() < 0) {
-                System.out.println("FODEO");
+                System.out.println("SALDO NEGATIVO");
             }
 
         }
     }
 
     private void withdrawal(int amount) {
-        if (account.getBalance() >= amount) {
-            System.out.println(getThreadName() + " está indo sacar");
-            account.withdrawal(amount);
-            System.out.println(getThreadName() + " completou o saque, o valor atual do saldo é: " + account.getBalance());
-        } else {
-            System.out.println("O valor " + amount + " é maior que o saldo");
+        System.out.println(getThreadName() + " Fora do sync");
+        synchronized (account) {
+            System.out.println(getThreadName() + " Dentro do sync");
+            if (account.getBalance() >= amount) {
+                System.out.println(getThreadName() + " está indo sacar");
+                account.withdrawal(amount);
+                System.out.println(getThreadName() + " completou o saque, o valor atual do saldo é: " + account.getBalance());
+            } else {
+                System.out.println("O valor " + amount + " é maior que o saldo");
+            }
         }
-
     }
 
     private static String getThreadName() {
