@@ -2,7 +2,6 @@ package academy.devdojo.maratonajava.javacore.ZZFthreads.dominio;
 
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingDeque;
 
 public class Members {
     private final Queue<String> emails = new ArrayBlockingQueue<>(10);
