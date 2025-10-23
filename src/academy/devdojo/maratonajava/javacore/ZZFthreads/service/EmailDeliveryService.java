@@ -18,13 +18,13 @@ public class EmailDeliveryService implements Runnable {
                 String email = members.retrieveEmail();
                 if (email == null) continue;
                 System.out.println(threadName + " enviando email para " + email);
-                Thread.sleep(2000);
+                Thread.sleep(4000);
                 System.out.println(threadName + " enviou email com sucesso para " + email);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
-        System.out.println("Todos os emails enviado com sucesso");
+        System.out.println("Todos os emails foram enviados com sucesso");
 
     }
 }

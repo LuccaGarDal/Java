@@ -29,7 +29,7 @@ public class Members {
     public String retrieveEmail () throws InterruptedException {
         System.out.println(Thread.currentThread().getName() + " checking if there are emails");
         synchronized (this.emails) {
-            while(this.emails.size() == 0) {
+            while(this.emails.isEmpty()) {
                 if (!open) return null;
                 System.out.println(Thread.currentThread().getName() + " não há email disponível na lista, entrando em modo de espera");
                 this.emails.wait();
