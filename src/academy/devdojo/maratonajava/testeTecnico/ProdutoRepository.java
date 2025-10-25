@@ -42,11 +42,20 @@ public class ProdutoRepository {
 
     }
 
-    public void searchById (int id) {
+    public List<Produto> searchById (int id) {
+        List<Produto> listById = new ArrayList<>();
         for (Produto produto : produtoList) {
             if (produto.getId() == id) {
-                System.out.println(produto);
+                listById.add(produto);
             }
+        }
+        if (listById.isEmpty()) {
+            System.out.printf("Não foi possível achar nenhum produto com o id %d%n", id);
+            return null;
+        }
+        else {
+            System.out.printf("Aqui está a lista de produtos com o id %d%n", id);
+            return listById;
         }
 
     }

@@ -19,5 +19,7 @@ public class Main {
         ProdutoRepository produtoRepository = new ProdutoRepository(list);
         produtoRepository.addProduto(new Produto("Pomada", 9, 39.90, 1));
         System.out.println(produtoRepository.listAllProdutos());
+        System.out.println(produtoRepository.searchByName("Escova"));
+        System.out.println(produtoRepository.searchById(1));
     }
 }
