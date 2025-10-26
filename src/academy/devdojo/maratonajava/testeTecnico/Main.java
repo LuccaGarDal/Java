@@ -21,5 +21,7 @@ public class Main {
         System.out.println(produtoRepository.listAllProdutos());
         System.out.println(produtoRepository.searchByName("Escova"));
         System.out.println(produtoRepository.searchById(1));
+        produtoRepository.updateQuantity(1, 10);
+        System.out.println(produtoRepository.listAllProdutos());
     }
 }

@@ -59,4 +59,18 @@ public class ProdutoRepository {
         }
 
     }
+
+    public void updateQuantity (int id, int qnt) {
+        String name;
+        for (Produto produto1 : produtoList) {
+            if (produto1.getId() == id) {
+                produto1.setQuantity(qnt);
+                name = produto1.getName();
+                System.out.printf("Quantidade de (%s) alterada para: %d.", name, qnt);
+            }
+
+        }
+
+
+    }
 }
