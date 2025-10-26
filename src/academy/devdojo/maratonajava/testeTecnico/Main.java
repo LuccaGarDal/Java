@@ -23,5 +23,9 @@ public class Main {
         System.out.println(produtoRepository.searchById(1));
         produtoRepository.updateQuantity(1, 10);
         System.out.println(produtoRepository.listAllProdutos());
+        produtoRepository.deleteProduto(2);
+        System.out.println(produtoRepository.listAllProdutos());
+        produtoRepository.deleteProduto(3);
+        System.out.println(produtoRepository.listAllProdutos());
     }
 }

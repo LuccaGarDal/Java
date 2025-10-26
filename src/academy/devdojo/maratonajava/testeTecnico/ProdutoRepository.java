@@ -70,7 +70,15 @@ public class ProdutoRepository {
             }
 
         }
+    }
 
+    public void deleteProduto (int id) {
+        boolean removed = produtoList.removeIf(s -> s.getId() == id);
+        if (removed) {
+            System.out.printf("Produto de ID %d removido %n", id);
+        } else {
+            System.out.println("Não foi encontrado produto com esse ID %n");
+        }
 
     }
 }
