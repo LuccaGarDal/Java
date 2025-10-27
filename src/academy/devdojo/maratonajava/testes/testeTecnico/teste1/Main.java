@@ -1,4 +1,4 @@
-package academy.devdojo.maratonajava.testeTecnico;
+package academy.devdojo.maratonajava.testes.testeTecnico.teste1;
 
 import java.util.ArrayList;
 import java.util.List;
