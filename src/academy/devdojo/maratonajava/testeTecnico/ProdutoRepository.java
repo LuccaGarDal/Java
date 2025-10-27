@@ -20,7 +20,7 @@ public class ProdutoRepository {
             System.out.println("A lista está vazia");
             return null;
         }
-        System.out.println("Aqui está a lista de produtos disponíveis:");
+        System.out.println("Aqui está a lista de produtos disponíveis:%n");
         return produtoList;
     }
 
@@ -36,7 +36,7 @@ public class ProdutoRepository {
             return null;
         }
         else {
-            System.out.printf("Aqui está a lista de produtos que contém %s", name);
+            System.out.printf("Aqui está a lista de produtos que contém %s%n", name);
             return listByName;
         }
 
@@ -66,7 +66,7 @@ public class ProdutoRepository {
             if (produto1.getId() == id) {
                 produto1.setQuantity(qnt);
                 name = produto1.getName();
-                System.out.printf("Quantidade de (%s) alterada para: %d.", name, qnt);
+                System.out.printf("Quantidade de (%s) alterada para: %d.%n", name, qnt);
             }
 
         }
@@ -81,4 +81,5 @@ public class ProdutoRepository {
         }
 
     }
+
 }
