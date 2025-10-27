@@ -78,6 +78,18 @@ public class Main {
                     } else {
                         opcao = 6;
                     }
+                case 5:
+                    System.out.println("Digite o ID do produto que deseja deletar: ");
+                    int idDeletar = scanner.nextInt();
+                    produtoRepository.deleteProduto(idDeletar);
+                    System.out.println("1 - Voltar para o menu");
+                    System.out.println("2 - Sair");
+                    op = scanner.nextInt();
+                    if (op == 1) {
+                        break;
+                    } else {
+                        opcao = 6;
+                    }
             }
         }
     }
