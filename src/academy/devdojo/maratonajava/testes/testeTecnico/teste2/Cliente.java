@@ -18,6 +18,14 @@ public class Cliente {
                 '}';
     }
 
+    public Cliente(String name, int id, int age, TipoSexo tipoSexo, String nationality) {
+        this.name = name;
+        this.id = id;
+        this.age = age;
+        this.tipoSexo = tipoSexo;
+        this.nationality = nationality;
+    }
+
     public Cliente(String name, int age, TipoSexo tipoSexo, String nationality) {
         this.name = name;
         this.age = age;

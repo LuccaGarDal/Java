@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteRepository {
-    private List<Cliente> clientes = new ArrayList<>();
+    private final List<Cliente> clientes;
 
     public ClienteRepository(List<Cliente> clientes) {
         this.clientes = clientes;
@@ -25,7 +25,20 @@ public class ClienteRepository {
                 .toList();
 
         return list;
+    }
 
+    public void updateAge (int id, int age) {
+        List<Cliente> list = clientes.stream()
+                .filter(i -> i.getId() == id)
+                .toList();
+
+        for (Cliente cliente : list) {
+            cliente.setAge(age);
+        }
+    }
+    public void deleteUser (int id) {
+        clientes.removeIf(cliente -> cliente.getId() == id);
 
     }
+
 }
