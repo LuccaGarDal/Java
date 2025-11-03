@@ -1,0 +1,31 @@
+package academy.devdojo.maratonajava.javacore.ZZHpadroesdeprojeto.dominio;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class AircraftSingletonEager {
+    private static AircraftSingletonEager instance= new AircraftSingletonEager("GTR");
+    private final Set<String> availableSeats = new HashSet<>();
+    private String name;
+
+    {
+        availableSeats.add("1A");
+        availableSeats.add("1B");
+    }
+
+    private AircraftSingletonEager(String name) {
+        this.name = name;
+    }
+
+    public boolean bookSeat (String seat) {
+        return availableSeats.remove(seat);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static AircraftSingletonEager getInstance() {
+        return instance;
+    }
+}
