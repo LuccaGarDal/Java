@@ -12,6 +12,10 @@ public class Aircraft {
         availableSeats.add("1B");
     }
 
+    public String getName() {
+        return name;
+    }
+
     public Aircraft(String name) {
         this.name = name;
     }
