@@ -4,7 +4,7 @@ import academy.devdojo.maratonajava.javacore.ZZHpadroesdeprojeto.dominio.*;
 
 public class DataTransferObjectTest01 {
     static void main(String[] args) {
-        Aircraft aircraft = new Aircraft("GTR");
+        Aircraft aircraft = new Aircraft("GTR123");
         Country country = Country.BRAZIL;
         Currency currency = CurrencyFactory.newCurrency(country);
         Person person = Person.PersonBuilder.builder()
